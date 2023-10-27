@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>A Contact Form</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="form">
+            <form method="post">
+                <input type="text" placeholder="Name" id="name" autocomplete="off">
+                <input type="email" placeholder="Email" id="email" autocomplete="off">
+                <input type="text" placeholder="Subject" id="Subject" autocomplete="off">
+                <textarea type="message" placeholder="Message" cols="30" rows="10"></textarea>
+                <button id="btn">Send</button>
+            </form>
+        </div>
+        <script src="https://smtpjs.com/v3/smtp.js">
+        </script>
+        <script>
+            var btn = document.getElementById('btn');
+            btn.addEventListener('click' , function(e)
+            {
+             e.preventDefault()
+             var name = document.getElementById('name').value;
+             var email = document.getElementById('email').value;
+             var Subject = document.getElementById('subject').value;
+             var message = document.getElementById('message').value;
+             var body = 'name: '+name + '</br> email: '  + email + '</br> subject:' +subject + '</br> message: ' + message;
+
+                 Email.send({
+                 SecureToken : "02981025-ec44-4ab8-aa20-6f9492f8559b",
+                  To : 'aliharisjutt366@gmail.com',
+                 From : "shaiganahmed456@gmail.com",
+                Subject : "contact message",
+                Body : body
+                }).then(
+                message => alert(message)
+                            );
+            })
+
+        </script>
+    </body>
+</html>
